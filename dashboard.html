@@ -1,231 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>Course Materials Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>Semester Course Materials</h2>
+<h2>Course Materials Portal</h2>
 
-<h3>Semester 1</h3>
-<table>
+<input type="text" id="searchInput" placeholder="Search Course..."
+       onkeyup="searchCourse()">
+
+<br><br>
+
+<table id="resultTable">
     <tr>
+        <th>Semester</th>
         <th>Course</th>
         <th>Materials</th>
     </tr>
-
-    <tr>
-        <td>Discrete Mathematics</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1xhcKMrCcSX89-akWY9ENeZlSEJGJXxaU" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button></a>
-        </td>
-    </tr>
-
-    <tr>
-        <td>C Programming</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1s3acbWsg53XHK-byEn8Ps6EBay34TlZr" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
-    <tr>
-        <td>Chemistry</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1KnQFDGGthUvKrHve2TrB9zlsTVK2A-HP" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
-    <tr>
-        <td>TEPE</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1fm0PZVi-a6Uer2tWE149yP29-ko9goKO" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
 </table>
 
+<script>
 
+const courses = [
+    { sem: "Semester 1", name: "Discrete Mathematics", link: "https://drive.google.com/drive/folders/1xhcKMrCcSX89-akWY9ENeZlSEJGJXxaU" },
+    { sem: "Semester 1", name: "C Programming", link: "https://drive.google.com/drive/folders/1s3acbWsg53XHK-byEn8Ps6EBay34TlZr" },
+    { sem: "Semester 1", name: "Chemistry", link: "https://drive.google.com/drive/folders/1KnQFDGGthUvKrHve2TrB9zlsTVK2A-HP" },
+    { sem: "Semester 1", name: "TEPE", link: "https://drive.google.com/drive/folders/1fm0PZVi-a6Uer2tWE149yP29-ko9goKO" },
 
-<h3>Semester 2</h3>
-<table>
-    <tr>
-        <th>Course</th>
-        <th>Materials</th>
-    </tr>
+    { sem: "Semester 2", name: "Digital Logic Circuits", link: "https://drive.google.com/drive/folders/1-4uZqUJmxUBcPyS5Qh1Wm5PouuQXg6vh" },
+    { sem: "Semester 2", name: "Python", link: "https://drive.google.com/drive/folders/1t48PxLDJQwW31gpHBvGdHP_9EY7OoOeK" },
+    { sem: "Semester 2", name: "FEEE", link: "https://drive.google.com/drive/folders/1iOjc8c2ICOcKuDJGMTDFbuh1LZfVKSxP" },
+    { sem: "Semester 2", name: "Linear Algebra", link: "https://drive.google.com/drive/folders/1RIxRtQ46oGwAlNT2atH_E_mwsKXB1EB9" },
+    { sem: "Semester 2", name: "Physics", link: "https://drive.google.com/drive/folders/1MpvG9RRh-dnrlDFAkBBhN7jkWqbGPwK8" },
 
-    <tr>
-        <td>Digital Logic Circuits</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1-4uZqUJmxUBcPyS5Qh1Wm5PouuQXg6vh" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
+    { sem: "Semester 3", name: "OOPS", link: "https://drive.google.com/drive/folders/1Nwd4m-xHT09M2vnNCJAjlzz5UAU4EBUX" },
+    { sem: "Semester 3", name: "Data Structures", link: "https://drive.google.com/drive/folders/1OOrWssFWsegJdPAPG-azIy-kmtQSq2Xy" },
+    { sem: "Semester 3", name: "COA", link: "https://drive.google.com/drive/folders/1G0jj69UYJ5By0mTdL9hbmdF9bNp5Z_zg" },
+    { sem: "Semester 3", name: "Probability & Stat", link: "https://drive.google.com/drive/folders/1-0KlrEF3jKmHfb23yCgycWJyCpyDVils" },
+    { sem: "Semester 3", name: "Telecommunications for Society", link: "https://drive.google.com/drive/folders/1PboGsTDTvV3Ibmm41aZEswJGbkvNVld-" },
 
-    <tr>
-        <td>Python</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1t48PxLDJQwW31gpHBvGdHP_9EY7OoOeK" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
+    { sem: "Semester 4", name: "Operating Systems", link: "https://drive.google.com/drive/folders/1qJQ6OzMChjpmsBDRCWXhm13pUW5X84fA" },
+    { sem: "Semester 4", name: "DBMS", link: "https://drive.google.com/drive/folders/1qBMebPiIya0S5ij9JSaFe0aRJnAzaw0Z" },
+    { sem: "Semester 4", name: "Design and Analysis of Algorithm", link: "https://drive.google.com/drive/folders/10_Oh-gbmVH2L398bInEsHGminBQKfA8v" },
+    { sem: "Semester 4", name: "Critical Thinking", link: "https://drive.google.com/drive/folders/1FKE2zfMb4lVsqprsLOlxnJuQ4xzBUcox" },
+    { sem: "Semester 4", name: "Calculus", link: "https://drive.google.com/drive/folders/15KgWW6YvonNkV7RyhuVqEfdqCmFDpUzO" }
+];
 
-    <tr>
-        <td>FEEE</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1iOjc8c2ICOcKuDJGMTDFbuh1LZfVKSxP" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
+function searchCourse() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let table = document.getElementById("resultTable");
 
-    <tr>
-        <td>Linear Algebra</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1RIxRtQ46oGwAlNT2atH_E_mwsKXB1EB9" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
+    table.innerHTML = `
+        <tr>
+            <th>Semester</th>
+            <th>Course</th>
+            <th>Materials</th>
+        </tr>
+    `;
 
+    courses.forEach(course => {
+        if (course.name.toLowerCase().includes(input)) {
+            table.innerHTML += `
+                <tr>
+                    <td>${course.sem}</td>
+                    <td>${course.name}</td>
+                    <td>
+                        <a href="${course.link}" target="_blank" rel="noopener noreferrer">
+                            <button class="open-btn">Open Material</button>
+                        </a>
+                    </td>
+                </tr>
+            `;
+        }
+    });
+}
 
-    <tr>
-        <td>Physics</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1MpvG9RRh-dnrlDFAkBBhN7jkWqbGPwK8" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
-</table>
-
-
-
-<h3>Semester 3</h3>
-<table>
-    <tr>
-        <th>Course</th>
-        <th>Materials</th>
-    </tr>
-
-    <tr>
-        <td>OOPS</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1Nwd4m-xHT09M2vnNCJAjlzz5UAU4EBUX" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
-    <tr>
-        <td>Data Structures</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1OOrWssFWsegJdPAPG-azIy-kmtQSq2Xy" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
-    <tr>
-        <td>COA</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1G0jj69UYJ5By0mTdL9hbmdF9bNp5Z_zg" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
-    <tr>
-        <td>Probability & Stat</td>
-        <td>
-            <a href="hhttps://drive.google.com/drive/folders/1-0KlrEF3jKmHfb23yCgycWJyCpyDVils" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
-
-    <tr>
-        <td>Telecommunications for Society</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1PboGsTDTvV3Ibmm41aZEswJGbkvNVld-" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
-</table>
-
-
-<h3>Semester 4</h3>
-
-<table>
-    <tr>
-        <th>Course</th>
-        <th>Materials</th>
-    </tr>
-
-    <tr>
-        <td>Operating Systems</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1qJQ6OzMChjpmsBDRCWXhm13pUW5X84fA" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
-    <tr>
-        <td>DBMS</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1qBMebPiIya0S5ij9JSaFe0aRJnAzaw0Z" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
-    <tr>
-        <td>Design and Analysis of Algorithm</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/10_Oh-gbmVH2L398bInEsHGminBQKfA8v" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
-    <tr>
-        <td>Critical Thinking</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/1FKE2zfMb4lVsqprsLOlxnJuQ4xzBUcox" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
-
-    <tr>
-        <td>Calculus</td>
-        <td>
-            <a href="https://drive.google.com/drive/folders/15KgWW6YvonNkV7RyhuVqEfdqCmFDpUzO" 
-               target="_blank" 
-               rel="noopener noreferrer"> <button>Open</button> </a>
-        </td>
-    </tr>
-
-</table>
-
-
-
+</script>
 
 </body>
 </html>
