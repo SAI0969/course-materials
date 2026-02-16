@@ -1,19 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login - Course Materials</title>
+    <title>Login - Course Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="login-box">
-    <h2>Course Materials Login</h2>
+<!-- ================= LOADING SCREEN ================= -->
+<div id="loader">
+    <div class="spinner"></div>
+    <p>Loading Portal...</p>
+</div>
+
+<!-- ================= LOGIN BOX ================= -->
+<div class="login-box" id="loginBox">
+    <h2>Course Materials Portal</h2>
+    <p class="subtitle">Academic Access System | Sai</p>
+
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
+
+    <button onclick="login()" id="loginBtn">Login</button>
+
     <p id="error"></p>
 </div>
 
-<script src="script.js"></script>
+<script>
+window.onload = function() {
+    setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("loginBox").classList.add("show");
+    }, 1500);
+};
+
+function login() {
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+    let btn = document.getElementById("loginBtn");
+
+    if(user === "nimda" && pass === "0969") {
+
+        btn.innerText = "Accessing...";
+        btn.disabled = true;
+
+        setTimeout(() => {
+            window.location.href = "dashboard.html";
+        }, 1200);
+
+    } else {
+        document.getElementById("error").innerText = "Invalid Credentials";
+    }
+}
+</script>
+
 </body>
 </html>
