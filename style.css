@@ -1,4 +1,6 @@
-/* ================= GLOBAL ================= */
+/* ==================================================
+   GLOBAL RESET
+================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -12,36 +14,40 @@ body {
     min-height: 100vh;
 }
 
-/* ================= HEADER ================= */
+/* ==================================================
+   HEADER (Dashboard)
+================================================== */
 .header {
     text-align: center;
     padding: 40px 20px;
 }
 
 .header h1 {
-    font-size: 36px;
-    letter-spacing: 1px;
+    font-size: 38px;
     color: #00f2ff;
+    letter-spacing: 1px;
 }
 
 .header p {
+    margin-top: 8px;
     opacity: 0.8;
-    margin-top: 10px;
 }
 
-/* ================= SEARCH ================= */
+/* ==================================================
+   SEARCH SECTION
+================================================== */
 .search-section {
     text-align: center;
-    margin: 20px 0 30px 0;
+    margin-bottom: 30px;
 }
 
 #searchInput {
-    width: 350px;
-    padding: 12px;
-    border-radius: 30px;
+    width: 400px;
+    padding: 14px;
+    border-radius: 40px;
     border: none;
     outline: none;
-    font-size: 15px;
+    font-size: 16px;
     background: rgba(255,255,255,0.1);
     color: white;
     backdrop-filter: blur(10px);
@@ -49,39 +55,42 @@ body {
 }
 
 #searchInput:focus {
-    box-shadow: 0 0 12px #00f2ff;
+    box-shadow: 0 0 15px #00f2ff;
 }
 
 #courseCount {
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 14px;
     opacity: 0.8;
 }
 
-/* ================= TABLE ================= */
+/* ==================================================
+   TABLE
+================================================== */
 .table-container {
     display: flex;
     justify-content: center;
 }
 
 table {
-    width: 75%;
+    width: 80%;
     border-collapse: collapse;
     background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
     overflow: hidden;
     animation: fadeIn 0.6s ease-in-out;
 }
 
 th {
-    padding: 15px;
+    padding: 18px;
     background-color: rgba(0,0,0,0.6);
     color: #00f2ff;
+    font-size: 16px;
 }
 
 td {
-    padding: 15px;
+    padding: 16px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
@@ -90,10 +99,12 @@ tr:hover {
     transition: 0.3s ease;
 }
 
-/* ================= BUTTON ================= */
+/* ==================================================
+   OPEN MATERIAL BUTTON
+================================================== */
 .open-btn {
-    padding: 8px 18px;
-    border-radius: 20px;
+    padding: 10px 22px;
+    border-radius: 30px;
     border: none;
     font-weight: bold;
     cursor: pointer;
@@ -103,38 +114,117 @@ tr:hover {
 }
 
 .open-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px #00f2ff;
+    transform: scale(1.12);
+    box-shadow: 0 0 18px #00f2ff;
 }
 
 .open-btn:active {
     transform: scale(0.95);
 }
 
-/* ================= FOOTER ================= */
+/* ==================================================
+   FOOTER
+================================================== */
 .footer {
     text-align: center;
     margin-top: 60px;
     padding: 20px;
+    font-size: 14px;
     opacity: 0.7;
+}
+
+/* ==================================================
+   LOGIN PAGE
+================================================== */
+.login-box {
+    width: 450px;
+    margin: 120px auto;
+    padding: 50px;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(18px);
+    border-radius: 25px;
+    box-shadow: 0 0 35px rgba(0, 242, 255, 0.25);
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.6s ease;
+}
+
+.login-box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.login-box h2 {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.subtitle {
+    margin-bottom: 30px;
+    font-size: 14px;
+    opacity: 0.75;
+}
+
+/* Input Groups */
+.input-group {
+    text-align: left;
+    margin-bottom: 22px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 18px;
+    font-size: 17px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    background: #1e1e1e;
+    color: white;
+    transition: 0.3s ease;
+}
+
+.input-group input:focus {
+    box-shadow: 0 0 14px #00f2ff;
+}
+
+/* Login Button */
+.login-box button {
+    width: 100%;
+    padding: 16px;
+    font-size: 17px;
+    border-radius: 40px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(45deg, #00f2ff, #00c6ff);
+    color: black;
+    transition: 0.3s ease;
+}
+
+.login-box button:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 20px #00f2ff;
+}
+
+/* Error */
+#error {
+    margin-top: 14px;
+    color: #ff4d4d;
     font-size: 14px;
 }
 
-/* ================= ANIMATION ================= */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-
-/* ================= LOADER ================= */
+/* ==================================================
+   LOADER
+================================================== */
 #loader {
     position: fixed;
     width: 100%;
@@ -148,13 +238,13 @@ tr:hover {
 }
 
 .spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #222;
-    border-top: 5px solid #00f2ff;
+    width: 60px;
+    height: 60px;
+    border: 6px solid #222;
+    border-top: 6px solid #00f2ff;
     border-radius: 50%;
     animation: spin 1s linear infinite;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 @keyframes spin {
@@ -162,26 +252,16 @@ tr:hover {
     100% { transform: rotate(360deg); }
 }
 
-/* ================= LOGIN ANIMATION ================= */
-.login-box {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: 0.6s ease;
+/* ==================================================
+   FADE ANIMATION
+================================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-
-.login-box.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.subtitle {
-    opacity: 0.8;
-    margin-bottom: 20px;
-    font-size: 14px;
-}
-
-#error {
-    color: #ff4d4d;
-    margin-top: 10px;
-}
-
