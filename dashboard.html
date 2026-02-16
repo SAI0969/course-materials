@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Course Materials Portal</title>
+    <title>Course Materials Portal - Sai</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>Course Materials Portal</h2>
+<!-- ================= HEADER ================= -->
+<div class="header">
+    <h1>Course Materials Portal</h1>
+    <p>Academic Resource Access System | Sai</p>
+</div>
 
-<input type="text" id="searchInput" placeholder="Search Course..."
-       onkeyup="searchCourse()">
+<!-- ================= SEARCH SECTION ================= -->
+<div class="search-section">
+    <input type="text" id="searchInput" placeholder="Search your course..."
+           onkeyup="searchCourse()">
+    <p id="courseCount"></p>
+</div>
 
-<br><br>
+<!-- ================= TABLE ================= -->
+<div class="table-container">
+    <table id="resultTable">
+        <tr>
+            <th>Semester</th>
+            <th>Course</th>
+            <th>Access</th>
+        </tr>
+    </table>
+</div>
 
-<table id="resultTable">
-    <tr>
-        <th>Semester</th>
-        <th>Course</th>
-        <th>Materials</th>
-    </tr>
-</table>
+<!-- ================= FOOTER ================= -->
+<div class="footer">
+    © 2026 Sai | Academic Materials Portal
+</div>
 
 <script>
 
@@ -51,17 +65,19 @@ const courses = [
 function searchCourse() {
     let input = document.getElementById("searchInput").value.toLowerCase();
     let table = document.getElementById("resultTable");
+    let count = 0;
 
     table.innerHTML = `
         <tr>
             <th>Semester</th>
             <th>Course</th>
-            <th>Materials</th>
+            <th>Access</th>
         </tr>
     `;
 
     courses.forEach(course => {
         if (course.name.toLowerCase().includes(input)) {
+            count++;
             table.innerHTML += `
                 <tr>
                     <td>${course.sem}</td>
@@ -75,6 +91,17 @@ function searchCourse() {
             `;
         }
     });
+
+    if (count === 0 && input !== "") {
+        table.innerHTML += `
+            <tr>
+                <td colspan="3">No course found</td>
+            </tr>
+        `;
+    }
+
+    document.getElementById("courseCount").innerText =
+        input !== "" ? count + " course(s) found" : "";
 }
 
 </script>
