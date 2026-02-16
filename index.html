@@ -17,13 +17,21 @@
     <h2>Course Materials Portal</h2>
     <p class="subtitle">Academic Access System | Sai</p>
 
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
+    <div class="input-group">
+        <label>Username</label>
+        <input type="text" id="username" placeholder="Enter your username">
+    </div>
+
+    <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter your password">
+    </div>
 
     <button onclick="login()" id="loginBtn">Login</button>
 
     <p id="error"></p>
 </div>
+
 
 <script>
 window.onload = function() {
